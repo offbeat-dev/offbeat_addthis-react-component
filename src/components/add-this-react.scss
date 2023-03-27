@@ -1,29 +1,37 @@
 @use '@carbon/layout';
 @use '@carbon/colors';
+@use '@carbon/type';
 
 .cds--link.share-post-button {
-  color: colors.$red-50;
+  color: colors.$gray-90;
   cursor: pointer;
   border-radius: 50%;
   border: 2px solid white;
   padding: layout.$spacing-03;
+  transition: all 0.3s;
 
   svg {
-    fill: colors.$red-50;
+    fill: colors.$gray-90;
   }
 
-  &:hover {
+  &:hover,
+  &:focus,
+  .share-post-float-container.open & {
     padding: layout.$spacing-03;
-    border: 2px solid colors.$red-50;
+    border: 2px solid colors.$gray-90;
   }
+}
+
+.add-this-share-title {
+  @include type.type-style('productive-heading-03');
 }
 
 .ms-blog-detail-page__share-post {
   display: flex;
 }
 
-.ms-blog-details__add-this-share {
-  color: colors.$blue-50;
+.add-this-share {
+  color: colors.$gray-90;
 
   & .addthis_inline_share_toolbox.float {
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -44,7 +52,7 @@
   }
 }
 
-.ms-blog-detail-block__share-post-float-container {
+.share-post-float-container {
   align-items: flex-start;
   display: flex;
   flex-direction: column;

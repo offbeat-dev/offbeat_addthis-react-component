@@ -2,7 +2,6 @@ import { Share } from '@carbon/icons-react';
 import { Link, Loading } from 'carbon-components-react';
 import React, { useState, useEffect } from 'react';
 import { useExternalScript } from '../hooks/useExternalScript';
-import './add-this-react.scss';
 
 type IPropAddThis = {
   url: string;
@@ -20,7 +19,7 @@ const AddThis = ({ url, title, float = false }: IPropAddThis) => {
     if (float) {
       return (
         <>
-          <div className="ms-blog-detail-block__share-post-float-container">
+          <div className={`share-post-float-container ${open ? 'open' : ''}`}>
             <Link onClick={() => setOpen(!open)} className="share-post-button">
               <Share size="24" />
             </Link>
@@ -40,10 +39,8 @@ const AddThis = ({ url, title, float = false }: IPropAddThis) => {
   };
 
   return (
-    <div className={`ms-blog-details__add-this-share ${float ? 'float' : ''}`}>
-      {!!title && (
-        <h3 className="ms-blog-details__add-this-share-title">{title}</h3>
-      )}
+    <div className={`add-this-share ${float ? 'float' : ''}`}>
+      {!!title && <h3 className="add-this-share-title">{title}</h3>}
       {state === 'ready' && renderComponent()}
       {state === 'loading' && <Loading />}
     </div>
